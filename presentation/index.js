@@ -1,5 +1,5 @@
 // Import React
-import React from "react";
+import React from 'react'
 
 // Import Spectacle Core tags
 import {
@@ -11,62 +11,133 @@ import {
   List,
   Quote,
   Slide,
-  Text
-} from "spectacle";
+  Text,
+  Image
+} from 'spectacle'
 
 // Import theme
-import createTheme from "spectacle/lib/themes/default";
+import createTheme from 'spectacle/lib/themes/default'
 
 // Require CSS
-require("normalize.css");
+require('normalize.css')
 
-const theme = createTheme({
-  primary: "white",
-  secondary: "#1F2022",
-  tertiary: "#03A9FC",
-  quarternary: "#CECECE"
-}, {
-  primary: "Montserrat",
-  secondary: "Helvetica"
-});
+// Images
+import fastlyLogo from '../assets/fastly-logo-white.png'
+
+const colors = {
+  primary: 'white',
+  secondary: '#1F2022',
+  tertiary: '#D8315B',
+  quarternary: '#CECECE'
+}
+
+const fonts = {
+  primary: 'Montserrat',
+  secondary: 'Road Rage'
+}
+
+const theme = createTheme(colors, fonts)
+
+const dangerStyle = {
+  color: colors.tertiary,
+  fontFamily: fonts.secondary
+}
+
+const bs = (factor = 1) => `${15 * factor}px`
 
 export default class Presentation extends React.Component {
   render() {
     return (
-      <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
-        <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Spectacle Boilerplate
+      <Deck
+        transition={['zoom', 'slide']}
+        transitionDuration={500}
+        theme={theme}
+      >
+        <Slide transition={['fade']} bgColor="secondary">
+          <Heading size={3} lineHeight={1.1} caps textColor="primary">
+            Just Enough FP to be a{' '}
+            <span
+              style={{
+                ...dangerStyle,
+                fontSize: '1.25em',
+                textShadow: '1px 1px white'
+              }}
+            >
+              Danger
+            </span>{' '}
+            to Yourself and Coworkers
           </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            open the presentation/index.js file to get started
+        </Slide>
+
+        <Slide transition={['fade']} bgColor="tertiary">
+          <Heading
+            size={4}
+            textColor="primary"
+            textFont="secondary"
+            caps
+            style={{
+              marginBottom: bs(4)
+            }}
+          >
+            Who Am I?
+          </Heading>
+          <Heading
+            size={2}
+            textColor="secondary"
+            style={{
+              marginBottom: bs()
+            }}
+          >
+            Kyle Shevlin
+          </Heading>
+          <Text textColor="secondary" style={{ marginBottom: bs(4) }}>
+            Senior Software Engineer
+          </Text>
+          <Image src={fastlyLogo} width="25%" />
+        </Slide>
+
+        <Slide
+          transition={['fade']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={4} textColor="secondary">
+            A <span style={dangerStyle}>brief</span> anecdote
+          </Heading>
+          <Text>About the inspiration for the title</Text>
+        </Slide>
+
+        <Slide>
+          <Text>
+            Second week on the job, I'm perusing the code base when I
+            find this...
           </Text>
         </Slide>
-        <Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>Typography</Heading>
-          <Heading size={1} textColor="secondary">Heading 1</Heading>
-          <Heading size={2} textColor="secondary">Heading 2</Heading>
-          <Heading size={3} textColor="secondary">Heading 3</Heading>
-          <Heading size={4} textColor="secondary">Heading 4</Heading>
-          <Heading size={5} textColor="secondary">Heading 5</Heading>
-          <Text size={6} textColor="secondary">Standard text</Text>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>Standard List</Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
-          </List>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+
+        <Slide
+          transition={['fade']}
+          bgColor="secondary"
+          textColor="primary"
+        >
           <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
+            <Quote textSize="1.75em" style={{ lineHeight: 1.2 }}>
+              When I was a child, I [wrote imperative code]. When I
+              became a[n adult], I set aside childish things.
+            </Quote>
+            <Cite
+              textFont="secondary"
+              style={{
+                marginBottom: bs(4)
+              }}
+            >
+              St. Paul - 1 Corinthians 13:11
+            </Cite>
+            <Text textSize=".75em" textColor="primary">
+              *modified for gender inclusivity and humor
+            </Text>
           </BlockQuote>
         </Slide>
       </Deck>
-    );
+    )
   }
 }

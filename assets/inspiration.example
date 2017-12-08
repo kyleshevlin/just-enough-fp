@@ -1,0 +1,10 @@
+  import moment from 'moment';
+
+  export const EXPIRY_YEARS = function() {
+    const year = moment().year();
+    let years = [];
+    for (let i = 0; i < 10; i++) {
+      years.push((year + i).toString());
+    }
+    return years;
+  }();

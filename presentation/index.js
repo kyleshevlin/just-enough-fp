@@ -5,6 +5,8 @@ import React from 'react'
 import {
   BlockQuote,
   Cite,
+  Code,
+  CodePane,
   Deck,
   Heading,
   ListItem,
@@ -20,6 +22,7 @@ import createTheme from 'spectacle/lib/themes/default'
 
 // Require CSS
 require('normalize.css')
+import './prism.css'
 
 // Images
 import fastlyLogo from '../assets/fastly-logo-white.png'
@@ -109,9 +112,13 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Text>
-            Second week on the job, I'm perusing the code base when I
+            New job, I'm perusing the code base when I
             find this...
           </Text>
+        </Slide>
+
+        <Slide>
+          <CodePane lang="js" source={require('raw-loader!../assets/inspiration.example')} style={{fontSize: '1em' }} />
         </Slide>
 
         <Slide

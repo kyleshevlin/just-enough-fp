@@ -9,12 +9,12 @@ import {
   CodePane,
   Deck,
   Heading,
+  Image,
   ListItem,
   List,
   Quote,
   Slide,
-  Text,
-  Image
+  Text
 } from 'spectacle'
 
 // Import theme
@@ -22,7 +22,6 @@ import createTheme from 'spectacle/lib/themes/default'
 
 // Require CSS
 require('normalize.css')
-import './prism.css'
 
 // Images
 import fastlyLogo from '../assets/fastly-logo-white.png'
@@ -43,8 +42,13 @@ const theme = createTheme(colors, fonts)
 
 const dangerStyle = {
   color: colors.tertiary,
-  fontFamily: fonts.secondary
+  fontFamily: fonts.secondary,
+  fontSize: '1.25em'
 }
+
+const DangerSpan = ({ children }) => (
+  <span style={dangerStyle}>{children}</span>
+)
 
 const bs = (factor = 1) => `${15 * factor}px`
 
@@ -52,17 +56,16 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck
-        transition={['zoom', 'slide']}
+        transition={['fade']}
         transitionDuration={500}
         theme={theme}
       >
-        <Slide transition={['fade']} bgColor="secondary">
+        <Slide bgColor="secondary">
           <Heading size={3} lineHeight={1.1} caps textColor="primary">
             Just Enough FP to be a{' '}
             <span
               style={{
                 ...dangerStyle,
-                fontSize: '1.25em',
                 textShadow: '1px 1px white'
               }}
             >
@@ -72,7 +75,7 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={['fade']} bgColor="tertiary">
+        <Slide bgColor="tertiary">
           <Heading
             size={4}
             textColor="primary"
@@ -99,33 +102,34 @@ export default class Presentation extends React.Component {
           <Image src={fastlyLogo} width="25%" />
         </Slide>
 
-        <Slide
-          transition={['fade']}
-          bgColor="primary"
-          textColor="tertiary"
-        >
-          <Heading size={4} textColor="secondary">
-            A <span style={dangerStyle}>brief</span> anecdote
+        <Slide bgColor="primary" textColor="tertiary">
+          <Heading size={2} textColor="secondary">
+            A <DangerSpan>brief</DangerSpan> anecdote
           </Heading>
           <Text>About the inspiration for the title</Text>
         </Slide>
 
-        <Slide>
-          <Text>
-            New job, I'm perusing the code base when I
-            find this...
-          </Text>
+        <Slide bgColor="secondary">
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/inspiration.example')}
+            style={{
+              fontSize: '1em'
+            }}
+          />
         </Slide>
 
-        <Slide>
-          <CodePane lang="js" source={require('raw-loader!../assets/inspiration.example')} style={{fontSize: '1em' }} />
+        <Slide bgColor="secondary">
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/overengineered.example')}
+            style={{
+              fontSize: '1em'
+            }}
+          />
         </Slide>
 
-        <Slide
-          transition={['fade']}
-          bgColor="secondary"
-          textColor="primary"
-        >
+        <Slide bgColor="secondary" textColor="primary">
           <BlockQuote>
             <Quote textSize="1.75em" style={{ lineHeight: 1.2 }}>
               When I was a child, I [wrote imperative code]. When I
@@ -143,6 +147,93 @@ export default class Presentation extends React.Component {
               *modified for gender inclusivity and humor
             </Text>
           </BlockQuote>
+        </Slide>
+
+        <Slide>
+          <Heading>What is Functional Programming?</Heading>
+        </Slide>
+
+        <Slide>
+          <Heading>
+            It's a <DangerSpan>pain the ass</DangerSpan> to define
+          </Heading>
+        </Slide>
+
+        <Slide>
+          <Image src={require('../assets/pointilism.png')} />
+        </Slide>
+
+        <Slide>
+          <Image
+            src={require('../assets/impressionism.jpg')}
+            style={{ marginTop: '-5.5%' }}
+          />
+        </Slide>
+
+        <Slide>
+          <Text>
+            Let's focus instead on what makes it{' '}
+            <DangerSpan>different</DangerSpan> from other programming
+            paradigms
+          </Text>
+        </Slide>
+
+        <Slide>
+          <List>
+            <ListItem>Expressions over Statements</ListItem>
+            <ListItem>Avoids Mutations</ListItem>
+            <ListItem>Uses Immutable Data Structures</ListItem>
+            <ListItem>Avoids Side Effects</ListItem>
+            <ListItem>Declarative over Imperative</ListItem>
+          </List>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Imperative
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/imperative.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Declarative
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/declarative.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Functional
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/functional.example')}
+            style={{ fontSize: '.9em' }}
+          />
         </Slide>
       </Deck>
     )

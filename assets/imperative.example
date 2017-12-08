@@ -1,0 +1,11 @@
+function doubleEach (arr) {
+  const results = []
+
+  for (let i = 0; i < arr.length; i++) {
+    results.push(arr[i] * 2)
+  }
+
+  return results
+}
+
+const doubles = doubleEach([1, 2, 3]) // [2, 4, 6]

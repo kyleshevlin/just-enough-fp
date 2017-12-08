@@ -1,0 +1,9 @@
+const nextNNumbers = n => number =>
+  Array(n)
+    .fill()
+    .map((_, index) => number + index)
+
+const next10 = nextNNumbers(10)
+
+export const EXPIRY_YEARS =
+  next10(new Date().getFullYear())

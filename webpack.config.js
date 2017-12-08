@@ -2,11 +2,16 @@
 
 var path = require('path')
 var webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: ['babel-polyfill', 'webpack-hot-middleware/client', 'react-hot-loader/patch', './index'],
+  entry: [
+    'babel-polyfill',
+    'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    './index'
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -15,7 +20,12 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('styles.css')
+    new CopyWebpackPlugin([
+      {
+        from: 'presentation/prism.css',
+        to: 'prism.css'
+      }
+    ])
   ],
   module: {
     loaders: [
@@ -32,14 +42,6 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style-loader', 'raw-loader'],
-        include: __dirname
-      },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        }),
         include: __dirname
       },
       {

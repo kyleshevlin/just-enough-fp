@@ -1,0 +1,6 @@
+const double = x => x * 2
+const map = fn => xs => xs.map(fn)
+
+const doubleEach = map(double)
+
+const doubles = doubleEach([1, 2, 3]) // [2, 4, 6]

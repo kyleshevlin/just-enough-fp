@@ -1,0 +1,9 @@
+import uuidv4 from 'uuid/v4'
+
+const id = uuidv4() // Move the impurity
+
+function createNewUser (id, name, age) {
+  return { id, name, age }
+}
+
+createNewUser(id, 'Kyle', 32) // Now is a pure function

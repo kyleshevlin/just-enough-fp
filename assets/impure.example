@@ -1,0 +1,11 @@
+import uuidv4 from 'uuid/v4'
+
+function createNewUser (name, age) {
+  return {
+    id: uuidv4(), // Eww, Gross mutation
+    name,
+    age
+  }
+}
+
+createNewUser('Kyle', 32) // Creates a side effect

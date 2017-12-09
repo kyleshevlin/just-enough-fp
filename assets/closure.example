@@ -1,0 +1,11 @@
+function add (x) {
+  // x is available in this scope
+  return function (y) {
+    // Both x and y are available in this scope
+    return x + y
+  }
+}
+
+const add5 = add(5) // The value 5 is partially applied
+const twelve = add5(7) // We provide the 2nd argument to get 12
+const twenty = add5(15) // We can continue to reuse add5!

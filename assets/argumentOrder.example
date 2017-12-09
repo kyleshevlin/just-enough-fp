@@ -1,0 +1,5 @@
+// Hard to reuse
+const badMap = xs => fn => xs.map(fn)
+
+// Hard to refuse, see what I did there?!
+const goodMap = fn => xs => xs.map(fn)

@@ -53,26 +53,45 @@ const dangerStyle = {
   fontSize: '1.25em'
 }
 
-const DangerSpan = ({ children }) => <span style={dangerStyle}>{children}</span>
+const blackShadow = {
+  textShadow: '2px 2px #000'
+}
+
+const whiteShadow = {
+  textShadow: '2px 2px #fff'
+}
+
+const DangerSpan = ({
+  children,
+  darkShadow = false,
+  lightShadow = false
+}) => {
+  let styles = dangerStyle
+
+  if (darkShadow) {
+    styles = { ...dangerStyle, ...blackShadow }
+  } else if (lightShadow) {
+    styles = { ...dangerStyle, ...whiteShadow }
+  }
+
+  return <span style={styles}>{children}</span>
+}
 
 const bs = (factor = 1) => `${15 * factor}px`
 
 export default class Presentation extends React.Component {
   render() {
     return (
-      <Deck transition={['fade']} transitionDuration={500} theme={theme}>
+      <Deck
+        transition={['fade']}
+        transitionDuration={500}
+        theme={theme}
+      >
         <Slide bgColor="secondary">
           <Heading size={3} lineHeight={1.1} caps textColor="primary">
             Just Enough FP to be a{' '}
-            <span
-              style={{
-                ...dangerStyle,
-                textShadow: '1px 1px white'
-              }}
-            >
-              Danger
-            </span>{' '}
-            to Yourself and Coworkers
+            <DangerSpan lightShadow>Danger</DangerSpan> to Yourself
+            and Coworkers
           </Heading>
         </Slide>
 
@@ -105,7 +124,7 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="primary" textColor="tertiary">
           <Heading size={2} textColor="secondary">
-            A <DangerSpan>brief</DangerSpan> anecdote
+            A <DangerSpan darkShadow>brief</DangerSpan> anecdote
           </Heading>
           <Text>About the inspiration for the title</Text>
         </Slide>
@@ -130,11 +149,68 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
+        <Slide>
+          <Heading
+            size={2}
+            textFont="secondary"
+            textColor="tertiary"
+            style={blackShadow}
+          >
+            What is Functional Programming?
+          </Heading>
+        </Slide>
+
+        <Slide>
+          <Text>
+            It's a bit of a <DangerSpan>
+              pain in the ass
+            </DangerSpan>{' '}
+            to define
+          </Text>
+        </Slide>
+
+        <Slide>
+          <Image src={require('../assets/pointilism.png')} />
+        </Slide>
+
+        <Slide>
+          <Image
+            src={require('../assets/impressionism.jpg')}
+            style={{ marginTop: '-5.5%' }}
+          />
+        </Slide>
+
+        <Slide>
+          <Text>
+            Let's focus instead on what makes it{' '}
+            <DangerSpan>different</DangerSpan> from other programming
+            paradigms
+          </Text>
+        </Slide>
+
+        <Slide bgColor="tertiary">
+          <List>
+            <ListItem textColor="primary">
+              Expressions over Statements
+            </ListItem>
+            <ListItem textColor="primary">Avoids Mutations</ListItem>
+            <ListItem textColor="primary">
+              Uses Immutable Data Structures
+            </ListItem>
+            <ListItem textColor="primary">
+              Avoids Side Effects
+            </ListItem>
+            <ListItem textColor="primary">
+              Declarative over Imperative
+            </ListItem>
+          </List>
+        </Slide>
+
         <Slide bgColor="secondary" textColor="primary">
           <BlockQuote>
             <Quote textSize="1.75em" style={{ lineHeight: 1.2 }}>
-              When I was a child, I [wrote imperative code]. When I became a[n adult], I set aside
-              childish things.
+              When I was a child, I [wrote imperative code]. When I
+              became a[n adult], I set aside childish things.
             </Quote>
             <Cite
               textFont="secondary"
@@ -148,41 +224,6 @@ export default class Presentation extends React.Component {
               *modified for gender inclusivity and humor
             </Text>
           </BlockQuote>
-        </Slide>
-
-        <Slide>
-          <Heading>What is Functional Programming?</Heading>
-        </Slide>
-
-        <Slide>
-          <Heading>
-            It's a <DangerSpan>pain the ass</DangerSpan> to define
-          </Heading>
-        </Slide>
-
-        <Slide>
-          <Image src={require('../assets/pointilism.png')} />
-        </Slide>
-
-        <Slide>
-          <Image src={require('../assets/impressionism.jpg')} style={{ marginTop: '-5.5%' }} />
-        </Slide>
-
-        <Slide>
-          <Text>
-            Let's focus instead on what makes it <DangerSpan>different</DangerSpan> from other
-            programming paradigms
-          </Text>
-        </Slide>
-
-        <Slide>
-          <List>
-            <ListItem>Expressions over Statements</ListItem>
-            <ListItem>Avoids Mutations</ListItem>
-            <ListItem>Uses Immutable Data Structures</ListItem>
-            <ListItem>Avoids Side Effects</ListItem>
-            <ListItem>Declarative over Imperative</ListItem>
-          </List>
         </Slide>
 
         <Slide bgColor="secondary">
@@ -234,28 +275,46 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading size={2} textFont="secondary">
+          <Heading
+            size={2}
+            textFont="secondary"
+            textColor="tertiary"
+            style={blackShadow}
+          >
             Higher Order Functions
           </Heading>
         </Slide>
 
-        <Slide>
-          <Text>A higher order function does at least one of the following</Text>
+        <Slide bgColor="secondary">
+          <Text textColor="primary">
+            A <DangerSpan>higher order function</DangerSpan> does at
+            least one of the following
+          </Text>
           <List>
-            <ListItem>Takes a function as an argument</ListItem>
-            <ListItem>Returns a new function</ListItem>
+            <ListItem textColor="primary">
+              Takes a function as an argument
+            </ListItem>
+            <ListItem textColor="primary">
+              Returns a new function
+            </ListItem>
           </List>
         </Slide>
 
-        <Slide>
-          <Heading size={2} textFont="secondary">
+        <Slide bgColor="tertiary">
+          <Heading
+            size={2}
+            textFont="secondary"
+            textColor="primary"
+            style={blackShadow}
+          >
             Purity
           </Heading>
         </Slide>
 
         <Slide>
           <Text>
-            A pure function is one that given the same inputs will always return the same output{' '}
+            A <DangerSpan>pure function</DangerSpan> is one that given
+            the same inputs will always return the same output{' '}
             <em>and</em> without any side effects.
           </Text>
         </Slide>
@@ -294,17 +353,28 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Text style={{ marginBottom: bs(4) }}>
-            Purity leads to easily testable functionality.
+            <DangerSpan>Purity</DangerSpan> leads to easily testable
+            functionality.
           </Text>
 
-          <Text>
-            It also creates trustworthy contracts between our functions which leads to more
-            interesting functionality later.
+          <Text style={{ marginBottom: bs(4) }}>
+            It also creates <DangerSpan>trustworthy</DangerSpan>*{' '}
+            contracts between our functions.
+          </Text>
+
+          <Text textAlign="left" style={{ fontSize: '.65em' }}>
+            *Mathematically, at least. The jury is still out on
+            bringing pure functions<br /> to your family dinner.
           </Text>
         </Slide>
 
-        <Slide>
-          <Heading size={2} textFont="secondary">
+        <Slide bgColor="tertiary">
+          <Heading
+            size={2}
+            textFont="secondary"
+            textColor="primary"
+            style={{ textShadow: '2px 2px 2px #000' }}
+          >
             Currying & Partial Application
           </Heading>
         </Slide>
@@ -316,8 +386,12 @@ export default class Presentation extends React.Component {
                 <DangerSpan>This</DangerSpan>
               </Text>
               <Image src={require('../assets/HaskellBCurry.jpg')} />
-              <Text style={{ fontSize: '.8em' }}>Haskell Brooks Curry</Text>
-              <Text style={{ fontSize: '.65em' }}>(super smart dude)</Text>
+              <Text style={{ fontSize: '.8em' }}>
+                Haskell Brooks Curry
+              </Text>
+              <Text style={{ fontSize: '.65em' }}>
+                (super smart dude)
+              </Text>
             </Fill>
             <Fill>
               <Text>
@@ -325,27 +399,40 @@ export default class Presentation extends React.Component {
               </Text>
               <Image src={require('../assets/redCurry.jpg')} />
               <Text style={{ fontSize: '.8em' }}>Curry</Text>
-              <Text style={{ fontSize: '.65em' }}>(super delicious food)</Text>
+              <Text style={{ fontSize: '.65em' }}>
+                (super delicious food)
+              </Text>
             </Fill>
           </Layout>
         </Slide>
 
-        <Slide>
-          <Text>
-            <DangerSpan>Currying</DangerSpan> is the technique of writing a function so that it only
-            receives one argument at a time.
+        <Slide bgColor="secondary">
+          <Text textColor="primary">
+            <DangerSpan>Currying</DangerSpan> is the technique of
+            writing a function so that it only receives one argument
+            at a time.
           </Text>
         </Slide>
 
         <Slide>
-          <Heading size={2} textFont="secondary" style={{ marginBottom: bs(4) }}>
+          <Heading
+            size={2}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{
+              marginBottom: bs(4),
+              textShadow: '2px 2px 2px #000'
+            }}
+          >
             Fancy Word Time
           </Heading>
           <Text style={{ marginBottom: bs(2) }}>
-            <DangerSpan>Arity</DangerSpan> describes how many arguments a function takes.
+            <DangerSpan>Arity</DangerSpan> describes how many
+            arguments a function takes.
           </Text>
           <Text>
-            A <DangerSpan>unary</DangerSpan> function has an arity of one.
+            A <DangerSpan>unary</DangerSpan> function has an arity of
+            one.
           </Text>
         </Slide>
 
@@ -382,14 +469,45 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading size={3} textFont="secondary" style={{ marginBottom: bs(4) }}>
-            Why was that useful?
+          <Heading
+            size={3}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ ...blackShadow, marginBottom: bs(4) }}
+          >
+            Why is this useful?
           </Heading>
           <Text style={{ marginBottom: bs(2) }}>
-            Because curried functions can store their arguments in closure. This is known as{' '}
+            Curried functions store their arguments in closure. We can
+            create reusable functions that already have some of their
+            arguments
+          </Text>
+          <Text style={{ marginBottom: bs(2) }}>
+            This is known as{' '}
             <DangerSpan>partial application</DangerSpan>
           </Text>
-          <Text>This becomes clear when you write them the old fashioned way</Text>
+          <Text>
+            This becomes clear when you write these functions the old
+            fashioned way
+          </Text>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Closure in a Curried Function
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/closure.example')}
+            style={{
+              fontSize: '.9em'
+            }}
+          />
         </Slide>
 
         <Slide bgColor="secondary">
@@ -403,18 +521,23 @@ export default class Presentation extends React.Component {
           </Heading>
           <CodePane
             lang="js"
-            source={require('raw-loader!../assets/closure.example')}
-            style={{ fontSize: '.9em', maxWidth: 'none', marginLeft: '-18%', marginRight: '-18%' }}
+            source={require('raw-loader!../assets/partialApplication.example')}
+            style={{
+              fontSize: '.9em'
+            }}
           />
         </Slide>
 
         <Slide>
           <Text style={{ marginBottom: bs(2) }}>
-            Argument order is <em>very</em> important when writing curried functions
+            Argument order is <DangerSpan>very</DangerSpan> important
+            when writing curried functions
+          </Text>
+          <Text style={{ marginBottom: bs(2) }}>
+            It is often best to pass the least stable argument last.
           </Text>
           <Text>
-            It is often best to pass the least stable argument last. Typically, this will be the{' '}
-            <DangerSpan>data</DangerSpan>
+            Typically, this will be the <DangerSpan>data</DangerSpan>
           </Text>
         </Slide>
 
@@ -450,8 +573,13 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide>
-          <Heading size={2} textFont="secondary">
+        <Slide bgColor="tertiary">
+          <Heading
+            size={2}
+            textFont="secondary"
+            textColor="primary"
+            style={blackShadow}
+          >
             Composition
           </Heading>
         </Slide>
@@ -461,17 +589,120 @@ export default class Presentation extends React.Component {
             Think back to high school*
           </Text>
           <Text textColor="primary" style={{ marginBottom: bs(2) }}>
-            Not the <DangerSpan>shitty parts</DangerSpan> you wish you could forget.
+            Not the <DangerSpan>shitty parts</DangerSpan> you wish you
+            could forget.
           </Text>
           <Text textColor="primary" style={{ marginBottom: bs(2) }}>
-            The <DangerSpan>math parts</DangerSpan> you probably did forget.**
+            The <DangerSpan>math parts</DangerSpan> you probably did
+            forget.**
           </Text>
-          <Text textColor="primary" style={{ fontSize: '.65em', marginBottom: bs() }}>
-            *My apologies for any painful flashbacks this might conjure up
+          <Text
+            textColor="primary"
+            style={{ fontSize: '.65em', marginBottom: bs() }}
+          >
+            *My apologies for any painful flashbacks this might
+            conjure up
           </Text>
           <Text textColor="primary" style={{ fontSize: '.65em' }}>
-            **Further apologies if the math parts were the shitty parts
+            **Further apologies if the math parts were the shitty
+            parts
           </Text>
+        </Slide>
+
+        <Slide bgColor="tertiary">
+          <Heading
+            size={2}
+            textFont="secondary"
+            textColor="primary"
+            style={{
+              textShadow: '1px 1px 1px #000',
+              marginBottom: bs(4)
+            }}
+          >
+            Remember this?
+          </Heading>
+          <Text style={{ fontSize: '3em' }}>
+            <em>f(x) = y</em>
+          </Text>
+        </Slide>
+
+        <Slide>
+          <Heading
+            size={3}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ ...blackShadow, marginBottom: bs(4) }}
+          >
+            Mathematical Composition
+          </Heading>
+          <Text style={{ fontSize: '3em' }}>
+            <em>f(g(x)) = y</em>
+          </Text>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Nested Composition
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/composition1.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Introducing Compose
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/composeFunction.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
+
+        <Slide bgColor="tertiary">
+          <List>
+            <ListItem textColor="primary">
+              Takes any number of functions
+            </ListItem>
+            <ListItem textColor="primary">
+              Returns a new function, awaits a value
+            </ListItem>
+            <ListItem textColor="primary">
+              Works right-to-left, inside-out
+            </ListItem>
+            <ListItem textColor="primary">
+              Result is passed into next function
+            </ListItem>
+          </List>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Functional Composition
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/composition2.example')}
+            style={{ fontSize: '.9em' }}
+          />
         </Slide>
       </Deck>
     )

@@ -1,0 +1,8 @@
+const add5 = add(5)
+// Returns a function with 5 partially applied
+
+const twelve = add5(7)
+// We provide the 2nd argument to get 12
+
+const twenty = add5(15)
+// We can continue to reuse add5!

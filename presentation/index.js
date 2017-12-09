@@ -704,6 +704,37 @@ export default class Presentation extends React.Component {
             style={{ fontSize: '.9em' }}
           />
         </Slide>
+
+        <Slide>
+          <Text>
+            I don't often need to <DangerSpan>yell</DangerSpan> at
+            people, Kyle.
+          </Text>
+          <Heading
+            size={3}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ ...blackShadow, marginTop: bs(4) }}
+          >
+            How Is this Useful?
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={4}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Data Manipulation
+          </Heading>
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/dataManipulation.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
       </Deck>
     )
   }

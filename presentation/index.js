@@ -707,8 +707,8 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Text>
-            I don't often need to <DangerSpan>yell</DangerSpan> at
-            people, Kyle.
+            I don't often <DangerSpan>yell</DangerSpan> at people,
+            Kyle, but...
           </Text>
           <Heading
             size={3}
@@ -730,10 +730,64 @@ export default class Presentation extends React.Component {
             Data Manipulation
           </Heading>
           <CodePane
+            lang="json"
+            source={require('raw-loader!../assets/jsonDump.example')}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <CodePane
             lang="js"
-            source={require('raw-loader!../assets/dataManipulation.example')}
+            source={require('raw-loader!../assets/dataExamples1.example')}
             style={{ fontSize: '.9em' }}
           />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/dataExamples2.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <CodePane
+            lang="js"
+            source={require('raw-loader!../assets/dataExamples3.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
+
+        <Slide bgColor="tertiary">
+          <Heading
+            size={3}
+            textColor="primary"
+            textFont="secondary"
+            style={{ ...blackShadow, marginBottom: bs(4) }}
+          >
+            Resources
+          </Heading>
+
+          <Text textColor="primary" style={{ marginBottom: bs(2) }}>
+            The Mostly Adequate Guide to Functional Programming
+          </Text>
+          <Text textColor="primary">Ramda</Text>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading
+            size={2}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ ...whiteShadow, marginBottom: bs(4) }}
+          >
+            Thank You!
+          </Heading>
+          <Text textColor="primary" style={{ marginBottom: bs(2) }}>
+            @kyleshevlin
+          </Text>
+          <Text textColor="primary">twitch.tv/kyleshevlin</Text>
         </Slide>
       </Deck>
     )

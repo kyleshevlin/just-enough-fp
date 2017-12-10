@@ -1,0 +1,11 @@
+const totalCost = compose(
+  discount(salesPercent),
+  reduce(add)(0),
+  map(prop('cost'))
+)
+
+totalCost([
+  { id: 1, cost: 40 },
+  { id: 2, cost: 35 },
+  { id: 3, cost: 50 }
+]) // 100

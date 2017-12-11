@@ -14,9 +14,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-emotion": "^8.0.12",
+    "emotion": "^8.0.12",
     "normalize.css": "7.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-emotion": "^8.0.12",
     "spectacle": "^4.0.0",
     "spectacle-renderer": "^0.0.3"
   },

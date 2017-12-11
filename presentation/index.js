@@ -1,5 +1,5 @@
-// Import React
 import React from 'react'
+import styled from 'react-emotion'
 
 // Import Spectacle Core tags
 import {
@@ -81,6 +81,12 @@ const DangerSpan = ({
 
 const bs = (factor = 1) => `${15 * factor}px`
 
+const DangerPane = styled(CodePane)`
+  pre {
+    background-color: transparent;
+  }
+`
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -132,7 +138,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary">
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/inspiration.example')}
             style={{
@@ -142,7 +148,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary">
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/overengineered.example')}
             style={{
@@ -234,7 +240,7 @@ export default class Presentation extends React.Component {
           >
             Imperative
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/imperative.example')}
             style={{ fontSize: '.9em' }}
@@ -250,7 +256,7 @@ export default class Presentation extends React.Component {
           >
             Declarative
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/declarative.example')}
             style={{ fontSize: '.9em' }}
@@ -266,7 +272,7 @@ export default class Presentation extends React.Component {
           >
             Functional
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/functional.example')}
             style={{ fontSize: '.9em' }}
@@ -327,7 +333,7 @@ export default class Presentation extends React.Component {
           >
             An Impure Function
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/impure.example')}
             style={{ fontSize: '.9em' }}
@@ -343,7 +349,7 @@ export default class Presentation extends React.Component {
           >
             A Pure Function
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/pure.example')}
             style={{ fontSize: '.9em' }}
@@ -444,7 +450,7 @@ export default class Presentation extends React.Component {
           >
             The Canonical Example
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/canonical.example')}
             style={{ fontSize: '.9em' }}
@@ -460,7 +466,7 @@ export default class Presentation extends React.Component {
           >
             ...With More Elegance
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/elegant.example')}
             style={{ fontSize: '.9em' }}
@@ -500,7 +506,7 @@ export default class Presentation extends React.Component {
           >
             Closure in a Curried Function
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/closure.example')}
             style={{
@@ -518,7 +524,7 @@ export default class Presentation extends React.Component {
           >
             Partial Application
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/partialApplication.example')}
             style={{
@@ -549,7 +555,7 @@ export default class Presentation extends React.Component {
           >
             Argument Order
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/argumentOrder.example')}
             style={{ fontSize: '.9em' }}
@@ -565,7 +571,7 @@ export default class Presentation extends React.Component {
           >
             Argument Order, Pt. 2
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/argumentOrder2.example')}
             style={{ fontSize: '.9em' }}
@@ -648,7 +654,7 @@ export default class Presentation extends React.Component {
           >
             Nested Composition
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/composition1.example')}
             style={{ fontSize: '.9em' }}
@@ -664,7 +670,7 @@ export default class Presentation extends React.Component {
           >
             Introducing Compose
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/composeFunction.example')}
             style={{ fontSize: '.9em' }}
@@ -697,7 +703,7 @@ export default class Presentation extends React.Component {
           >
             Functional Composition
           </Heading>
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/composition2.example')}
             style={{ fontSize: '.9em' }}
@@ -728,14 +734,14 @@ export default class Presentation extends React.Component {
           >
             Data Manipulation
           </Heading>
-          <CodePane
+          <DangerPane
             lang="json"
             source={require('raw-loader!../assets/jsonDump.example')}
           />
         </Slide>
 
         <Slide bgColor="secondary">
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/dataExamples1.example')}
             style={{ fontSize: '.9em' }}
@@ -743,7 +749,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary">
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/dataExamples2.example')}
             style={{ fontSize: '.9em' }}
@@ -751,7 +757,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary">
-          <CodePane
+          <DangerPane
             lang="js"
             source={require('raw-loader!../assets/dataExamples3.example')}
             style={{ fontSize: '.9em' }}

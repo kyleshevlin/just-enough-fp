@@ -2,7 +2,6 @@
 
 var path = require('path')
 var webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -19,13 +18,7 @@ module.exports = {
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: 'presentation/prism.css',
-        to: 'prism.css'
-      }
-    ])
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     loaders: [

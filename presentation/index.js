@@ -32,6 +32,8 @@ require('normalize.css')
 
 // Images
 import fastlyLogo from '../assets/fastly-logo-white.png'
+import pointilism from '../assets/pointilism.jpg'
+import impressionism from '../assets/impressionism.jpg'
 
 const colors = {
   primary: 'white',
@@ -170,14 +172,11 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Image src={require('../assets/pointilism.png')} />
+          <Image src={pointilism} />
         </Slide>
 
         <Slide>
-          <Image
-            src={require('../assets/impressionism.jpg')}
-            style={{ marginTop: '-5.5%' }}
-          />
+          <Image src={impressionism} style={{ marginTop: '-5.5%' }} />
         </Slide>
 
         <Slide>

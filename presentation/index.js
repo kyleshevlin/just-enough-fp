@@ -131,7 +131,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={2} textColor="secondary">
+          <Heading size={2} textColor="secondary" style={{ marginBottom: bs(4) }}>
             A <DangerSpan darkShadow>brief</DangerSpan> anecdote
           </Heading>
           <Text>About the inspiration for the title</Text>

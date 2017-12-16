@@ -32,6 +32,7 @@ require('normalize.css')
 
 // Images
 import fastlyLogo from '../assets/fastly-logo-white.png'
+import tweet from '../assets/ryrykubes.jpg'
 import pointilism from '../assets/pointilism.jpg'
 import impressionism from '../assets/impressionism.jpg'
 
@@ -130,8 +131,16 @@ export default class Presentation extends React.Component {
           <Image src={fastlyLogo} width="25%" />
         </Slide>
 
+        <Slide bgColor="secondary">
+          <Image src={tweet} />
+        </Slide>
+
         <Slide bgColor="primary" textColor="tertiary">
-          <Heading size={2} textColor="secondary" style={{ marginBottom: bs(4) }}>
+          <Heading
+            size={2}
+            textColor="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
             A <DangerSpan darkShadow>brief</DangerSpan> anecdote
           </Heading>
           <Text>About the inspiration for the title</Text>
@@ -195,8 +204,11 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="tertiary">
           <List>
-            <ListItem textColor="primary">
+            {/*<ListItem textColor="primary">
               Expressions over Statements
+            </ListItem>*/}
+            <ListItem textColor="primary">
+              Functions are first-class citizens
             </ListItem>
             <ListItem textColor="primary">Avoids Mutations</ListItem>
             <ListItem textColor="primary">
@@ -206,7 +218,7 @@ export default class Presentation extends React.Component {
               Avoids Side Effects
             </ListItem>
             <ListItem textColor="primary">
-              Declarative over Imperative
+              Declarative over Imperative code
             </ListItem>
           </List>
         </Slide>
@@ -279,6 +291,19 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
+        <Slide bgColor="tertiary">
+          <List>
+            <ListItem textColor="primary">
+              Higher Order Functions
+            </ListItem>
+            <ListItem textColor="primary">Purity</ListItem>
+            <ListItem textColor="primary">
+              Currying & Partial Application
+            </ListItem>
+            <ListItem textColor="primary">Composition</ListItem>
+          </List>
+        </Slide>
+
         <Slide>
           <Heading
             size={2}
@@ -320,7 +345,7 @@ export default class Presentation extends React.Component {
           <Text>
             A <DangerSpan>pure function</DangerSpan> is one that given
             the same inputs will always return the same output{' '}
-            <em>and</em> without any side effects.
+            <DangerSpan>and</DangerSpan> without any side effects.
           </Text>
         </Slide>
 

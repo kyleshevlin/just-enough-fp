@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/just-enough-fp/dist/'
   },
   plugins: [
     new webpack.DefinePlugin({

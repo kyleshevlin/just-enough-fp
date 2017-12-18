@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled, { injectGlobal } from 'react-emotion'
 
 // Import Spectacle Core tags
 import {
@@ -35,6 +35,20 @@ import fastlyLogo from '../assets/fastly-logo-white.png'
 import tweet from '../assets/ryrykubes.jpg'
 import pointilism from '../assets/pointilism.jpg'
 import impressionism from '../assets/impressionism.jpg'
+
+// Fonts
+import roadRage1 from '../assets/RoadRage.woff'
+import roadRage2 from '../assets/RoadRage.woff2'
+
+injectGlobal`
+@font-face {
+  font-family: 'Road Rage';
+  src: url(${roadRage2}) format('woff2'),
+    url(${roadRage1}) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+`
 
 const colors = {
   primary: 'white',
@@ -817,7 +831,10 @@ export default class Presentation extends React.Component {
           <Text textColor="primary" style={{ marginBottom: bs(2) }}>
             @kyleshevlin
           </Text>
-          <Text textColor="primary">twitch.tv/kyleshevlin</Text>
+          <Text textColor="primary" style={{ marginBottom: bs(2) }}>
+            twitch.tv/kyleshevlin
+          </Text>
+          <Text textColor="primary">Second Career Devs</Text>
         </Slide>
       </Deck>
     )

@@ -4,8 +4,8 @@ import styled, { injectGlobal } from 'react-emotion'
 
 // Import Spectacle Core tags
 import {
-  BlockQuote,
-  Cite,
+  // BlockQuote,
+  // Cite,
   // Code,
   CodePane,
   Deck,
@@ -16,7 +16,7 @@ import {
   Layout,
   ListItem,
   List,
-  Quote,
+  // Quote,
   Slide,
   // Table,
   // TableHeaderItem,

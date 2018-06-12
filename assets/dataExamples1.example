@@ -1,5 +1,5 @@
 const filter = fn => xs => xs.filter(fn)
-const take = number => xs => xs.slice(0, number)
+const take = n => xs => xs.slice(0, n)
 const prop = key => obj => obj[key]
 
 const first5InStock = compose(

@@ -4,6 +4,7 @@ import styled, { injectGlobal } from 'react-emotion'
 
 // Import Spectacle Core tags
 import {
+  Appear,
   // BlockQuote,
   // Cite,
   // Code,
@@ -110,9 +111,15 @@ const DangerSpan = ({ children, darkShadow = false, lightShadow = false }) => {
   let styles = dangerStyle
 
   if (darkShadow) {
-    styles = { ...dangerStyle, ...blackShadow }
+    styles = {
+      ...dangerStyle,
+      ...blackShadow
+    }
   } else if (lightShadow) {
-    styles = { ...dangerStyle, ...whiteShadow }
+    styles = {
+      ...dangerStyle,
+      ...whiteShadow
+    }
   }
 
   return <span style={styles}>{children}</span>
@@ -166,10 +173,12 @@ export default class Presentation extends React.Component {
           >
             Kyle Shevlin
           </Heading>
+          <Text textColor="secondary">Senior Software Engineer</Text>
           <Text textColor="secondary" style={{ marginBottom: bs(4) }}>
-            Senior Software Engineer
+            Host of the Second Career Devs podcast
           </Text>
           <FormidableLogo width={400} />
+          <Text textColor="primary">@FormidableLabs</Text>
         </Slide>
 
         <Slide bgColor="secondary">
@@ -247,14 +256,21 @@ export default class Presentation extends React.Component {
             <ListItem textColor="primary">
               Functions are first-class citizens
             </ListItem>
-            <ListItem textColor="primary">Avoids Mutations</ListItem>
-            <ListItem textColor="primary">
-              Uses Immutable Data Structures
-            </ListItem>
-            <ListItem textColor="primary">Avoids Side Effects</ListItem>
-            <ListItem textColor="primary">
-              Declarative over Imperative code
-            </ListItem>
+            <Appear>
+              <ListItem textColor="primary">
+                Immutable Data vs. Mutations
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary">
+                Carefully Handles Side Effects
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary">
+                Declarative vs. Imperative
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -330,11 +346,17 @@ export default class Presentation extends React.Component {
         <Slide bgColor="tertiary">
           <List>
             <ListItem textColor="primary">Higher Order Functions</ListItem>
-            <ListItem textColor="primary">Purity</ListItem>
-            <ListItem textColor="primary">
-              Currying & Partial Application
-            </ListItem>
-            <ListItem textColor="primary">Composition</ListItem>
+            <Appear>
+              <ListItem textColor="primary">Purity</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary">
+                Currying & Partial Application
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary">Composition</ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -419,14 +441,9 @@ export default class Presentation extends React.Component {
             functionality.
           </Text>
 
-          <Text style={{ marginBottom: bs(4) }}>
-            It also creates <DangerSpan>trustworthy</DangerSpan>* contracts
+          <Text>
+            It also creates <DangerSpan>trustworthy</DangerSpan> contracts
             between our functions.
-          </Text>
-
-          <Text textAlign="left" style={{ fontSize: '.65em' }}>
-            *Mathematically, at least. The jury is still out on bringing pure
-            functions<br /> to your family dinner.
           </Text>
         </Slide>
 
@@ -435,7 +452,9 @@ export default class Presentation extends React.Component {
             size={2}
             textFont="secondary"
             textColor="primary"
-            style={{ textShadow: '2px 2px 2px #000' }}
+            style={{
+              textShadow: '2px 2px 2px #000'
+            }}
           >
             Currying & Partial Application
           </Heading>
@@ -527,7 +546,10 @@ export default class Presentation extends React.Component {
             size={3}
             textColor="tertiary"
             textFont="secondary"
-            style={{ ...blackShadow, marginBottom: bs(4) }}
+            style={{
+              ...blackShadow,
+              marginBottom: bs(4)
+            }}
           >
             Why is this useful?
           </Heading>
@@ -537,10 +559,6 @@ export default class Presentation extends React.Component {
           </Text>
           <Text style={{ marginBottom: bs(2) }}>
             This is known as <DangerSpan>partial application</DangerSpan>
-          </Text>
-          <Text>
-            This becomes clear when you write these functions the old fashioned
-            way
           </Text>
         </Slide>
 
@@ -582,14 +600,13 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Text style={{ marginBottom: bs(2) }}>
-            Argument order is <DangerSpan>very</DangerSpan> important when
-            writing curried functions
+            Argument order is <DangerSpan>very important</DangerSpan>
           </Text>
           <Text style={{ marginBottom: bs(2) }}>
-            It is often best to pass the least stable argument last.
+            From most stable to least stable
           </Text>
           <Text>
-            Typically, this will be the <DangerSpan>data</DangerSpan>
+            <DangerSpan>data</DangerSpan> should be the final argument
           </Text>
         </Slide>
 
@@ -644,12 +661,15 @@ export default class Presentation extends React.Component {
             Not the <DangerSpan>shitty parts</DangerSpan> you wish you could
             forget.
           </Text>
-          <Text textColor="primary" style={{ marginBottom: bs(2) }}>
+          <Text textColor="primary" style={{ marginBottom: bs(4) }}>
             The <DangerSpan>math parts</DangerSpan> you probably did forget.**
           </Text>
           <Text
             textColor="primary"
-            style={{ fontSize: '.65em', marginBottom: bs() }}
+            style={{
+              fontSize: '.65em',
+              marginBottom: bs()
+            }}
           >
             *My apologies for any painful flashbacks this might conjure up
           </Text>
@@ -680,7 +700,10 @@ export default class Presentation extends React.Component {
             size={3}
             textColor="tertiary"
             textFont="secondary"
-            style={{ ...blackShadow, marginBottom: bs(4) }}
+            style={{
+              ...blackShadow,
+              marginBottom: bs(4)
+            }}
           >
             Mathematical Composition
           </Heading>
@@ -726,15 +749,21 @@ export default class Presentation extends React.Component {
             <ListItem textColor="primary">
               Takes any number of functions
             </ListItem>
-            <ListItem textColor="primary">
-              Returns a new function, awaits a value
-            </ListItem>
-            <ListItem textColor="primary">
-              Works right-to-left, inside-out
-            </ListItem>
-            <ListItem textColor="primary">
-              Result is passed into next function
-            </ListItem>
+            <Appear>
+              <ListItem textColor="primary">
+                Returns a new function, awaits a value
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary">
+                Works right-to-left, inside-out
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textColor="primary">
+                Result is passed into next function
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -754,6 +783,70 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
+        <Slide bgColor="secondary">
+          <Heading
+            size={3}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{ marginBottom: bs(4) }}
+          >
+            Bonus Lesson!
+          </Heading>
+          <DangerPane
+            lang="js"
+            source={require('raw-loader!../assets/pipe.example')}
+            style={{ fontSize: '.9em' }}
+          />
+        </Slide>
+
+        <Slide>
+          <Heading
+            size={3}
+            textColor="tertiary"
+            textFont="secondary"
+            style={{
+              ...blackShadow,
+              marginBottom: bs(4)
+            }}
+          >
+            Bonus Bonus Lesson!!!
+          </Heading>
+          <Text style={{ fontSize: '2em' }}>The Associative Property</Text>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Text
+            textColor="tertiary"
+            style={{ fontSize: '3.5em', marginBottom: bs(2) }}
+          >
+            1 + 2 + 3
+          </Text>
+          <Appear>
+            <Text
+              textColor="tertiary"
+              style={{ fontSize: '3.5em', marginBottom: bs(2) }}
+            >
+              (1 + 2) + 3
+            </Text>
+          </Appear>
+          <Appear>
+            <Text
+              textColor="tertiary"
+              style={{ fontSize: '3.5em', marginBottom: bs(2) }}
+            >
+              1 + (2 + 3)
+            </Text>
+          </Appear>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <DangerPane
+            lang="js"
+            source={require('raw-loader!../assets/associativity.example')}
+            style={{ fontSize: '1em' }}
+          />
+        </Slide>
+
         <Slide>
           <Text>
             I don't often <DangerSpan>yell</DangerSpan> at people, Kyle, but...
@@ -762,7 +855,10 @@ export default class Presentation extends React.Component {
             size={3}
             textColor="tertiary"
             textFont="secondary"
-            style={{ ...blackShadow, marginTop: bs(4) }}
+            style={{
+              ...blackShadow,
+              marginTop: bs(4)
+            }}
           >
             How Is this Useful?
           </Heading>
@@ -812,7 +908,10 @@ export default class Presentation extends React.Component {
             size={3}
             textColor="primary"
             textFont="secondary"
-            style={{ ...blackShadow, marginBottom: bs(4) }}
+            style={{
+              ...blackShadow,
+              marginBottom: bs(4)
+            }}
           >
             Resources
           </Heading>
@@ -820,7 +919,10 @@ export default class Presentation extends React.Component {
           <Text textColor="primary" style={{ marginBottom: bs(2) }}>
             The Mostly Adequate Guide to Functional Programming
           </Text>
-          <Text textColor="primary">Ramda</Text>
+          <Text textColor="primary" style={{ marginBottom: bs(2) }}>
+            Ramda
+          </Text>
+          <Text textColor="primary">egghead.io</Text>
         </Slide>
 
         <Slide bgColor="secondary">
@@ -828,7 +930,10 @@ export default class Presentation extends React.Component {
             size={2}
             textColor="tertiary"
             textFont="secondary"
-            style={{ ...whiteShadow, marginBottom: bs(4) }}
+            style={{
+              ...whiteShadow,
+              marginBottom: bs(4)
+            }}
           >
             Thank You!
           </Heading>

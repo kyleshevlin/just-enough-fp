@@ -2,5 +2,5 @@ const scream = str => str.toUpperCase()
 const exclaim = str => `${str}!`
 const repeat = str => `${str} ${str}`
 
-repeat(exclaim(scream('2017 was the worst')))
-// 2017 WAS THE WORST! 2017 WAS THE WORST!
+repeat(exclaim(scream('I need more ☕')))
+// I NEED MORE ☕! I NEED MORE ☕!

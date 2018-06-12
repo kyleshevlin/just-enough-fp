@@ -1,0 +1,9 @@
+const comp1 = compose(repeat, exclaim, scream)
+const comp2 =
+  compose(repeat, compose(exclaim, scream))
+const comp3 =
+  compose(compose(repeat, exclaim), scream)
+
+const str = "Srsly, where's my damn ☕?"
+
+comp1(str) === comp2(str) === comp3(str)

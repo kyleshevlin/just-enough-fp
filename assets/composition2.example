@@ -1,8 +1,8 @@
-const soCantEvenRightNow = compose(
+const gentleReminder = compose(
   repeat,
   exclaim,
   scream
 )
 
-soCantEvenRightNow('2017 was the worst')
-// 2017 WAS THE WORST! 2017 WAS THE WORST!
+gentleReminder('I need more ☕')
+// I NEED MORE ☕! I NEED MORE ☕!

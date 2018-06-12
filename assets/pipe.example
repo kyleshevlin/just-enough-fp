@@ -1,0 +1,11 @@
+const pipe = (...fns) => x =>
+  fns.reduce((acc, fn) => fn(acc), x)
+
+const gentleReminder2 = pipe(
+  scream,
+  exclaim,
+  repeat
+)
+
+gentleReminder2('I still need more ☕')
+// I STILL NEED MORE ☕! I STILL NEED MORE ☕!

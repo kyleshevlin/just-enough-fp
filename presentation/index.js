@@ -256,21 +256,13 @@ export default class Presentation extends React.Component {
             <ListItem textColor="primary">
               Functions are first-class citizens
             </ListItem>
-            <Appear>
-              <ListItem textColor="primary">
-                Immutable Data vs. Mutations
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem textColor="primary">
-                Carefully Handles Side Effects
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem textColor="primary">
-                Declarative vs. Imperative
-              </ListItem>
-            </Appear>
+            <ListItem textColor="primary">
+              Immutable Data vs. Mutations
+            </ListItem>
+            <ListItem textColor="primary">
+              Carefully Handles Side Effects
+            </ListItem>
+            <ListItem textColor="primary">Declarative vs. Imperative</ListItem>
           </List>
         </Slide>
 
@@ -346,17 +338,11 @@ export default class Presentation extends React.Component {
         <Slide bgColor="tertiary">
           <List>
             <ListItem textColor="primary">Higher Order Functions</ListItem>
-            <Appear>
-              <ListItem textColor="primary">Purity</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem textColor="primary">
-                Currying & Partial Application
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem textColor="primary">Composition</ListItem>
-            </Appear>
+            <ListItem textColor="primary">Purity</ListItem>
+            <ListItem textColor="primary">
+              Currying & Partial Application
+            </ListItem>
+            <ListItem textColor="primary">Composition</ListItem>
           </List>
         </Slide>
 
@@ -749,21 +735,15 @@ export default class Presentation extends React.Component {
             <ListItem textColor="primary">
               Takes any number of functions
             </ListItem>
-            <Appear>
-              <ListItem textColor="primary">
-                Returns a new function, awaits a value
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem textColor="primary">
-                Works right-to-left, inside-out
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem textColor="primary">
-                Result is passed into next function
-              </ListItem>
-            </Appear>
+            <ListItem textColor="primary">
+              Returns a new function, awaits a value
+            </ListItem>
+            <ListItem textColor="primary">
+              Works right-to-left, inside-out
+            </ListItem>
+            <ListItem textColor="primary">
+              Result is passed into next function
+            </ListItem>
           </List>
         </Slide>
 
@@ -918,6 +898,9 @@ export default class Presentation extends React.Component {
 
           <Text textColor="primary" style={{ marginBottom: bs(2) }}>
             The Mostly Adequate Guide to Functional Programming
+          </Text>
+          <Text textColor="primary" style={{ marginBottom: bs(2) }}>
+            Functional Light JS
           </Text>
           <Text textColor="primary" style={{ marginBottom: bs(2) }}>
             Ramda
